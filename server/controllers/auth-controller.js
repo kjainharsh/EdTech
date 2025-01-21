@@ -19,7 +19,7 @@ const register = async (req, res,next) => {
             return res.status(400).json({ message: "Email already exists" });
         }
         const data = await EdTechUser.create({ username, email, phone, password });
-        res.status(200).json({ msg: "Registration Successfully Done "});
+        res.status(200).json({ msg: "Registration Successfully Done ", token: await data.generateToken(), userId: data._id.toString()});
     } catch (error) {
         res.status(500).json({ message: "Server error" });
         next(error);
@@ -36,7 +36,7 @@ const login = async (req, res) => {
         //const user = await bcrypt.compare(password, userExist.password);
         // const user = await userExist.comparePassword(password);
         if (userExist) {
-            res.status(200).json({ msg: "Login Successfully Done "});
+            res.status(200).json({ msg: "Login Successfully Done ", token: await userExist.generateToken(), userId: userExist._id.toString() });
         }
         else {
             res.status(401).json({ message: "Invalid Login Credentials" });
