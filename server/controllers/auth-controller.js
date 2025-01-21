@@ -26,4 +26,25 @@ const register = async (req, res,next) => {
     }
 };
 
-module.exports = {  home,register };
+const login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const userExist = await EdTechUser.findOne({ email });
+        if (!userExist) {
+            return res.status(400).json({ message: "Invalid Credentials" });
+        }
+        //const user = await bcrypt.compare(password, userExist.password);
+        // const user = await userExist.comparePassword(password);
+        if (userExist) {
+            res.status(200).json({ msg: "Login Successfully Done "});
+        }
+        else {
+            res.status(401).json({ message: "Invalid Login Credentials" });
+        }
+    }
+    catch (error) {
+        res.status(500).json({ message: "Server error" });
+    }
+};
+
+module.exports = {  home,register,login };
