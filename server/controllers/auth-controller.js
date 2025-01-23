@@ -46,5 +46,16 @@ const login = async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 };
+const user = async (req, res) => {
+    try {
+        const userData = req.user;
+        console.log(userData);
 
-module.exports = {  home,register,login };
+        return res.status(200).json({ userData });
+
+    } catch (error) {
+        console.log(`error from the user route ${error}`);
+    }
+}
+
+module.exports = {  home,register,login,user };
