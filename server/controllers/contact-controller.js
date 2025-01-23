@@ -1,9 +1,9 @@
-const Contact = require("../models/contact-models");
+const EdTechContact = require("../models/contact-models");
 
 const contactForm = async (req, res) => {
     try {
         const response = req.body;
-        await Contact.create(response);
+        await EdTechContact.create(response);
         return res.status(200).send({ message: "Message sent successfully" });
     } catch (error) {
         console.log(error);

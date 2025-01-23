@@ -15,5 +15,5 @@ const contactSchema = new Schema({
     },
 });
 
-const Contact = model("EdTechContact", contactSchema);
-module.exports = Contact;
+const EdTechContact = model("EdTechContact", contactSchema);
+module.exports = EdTechContact;

@@ -5,9 +5,9 @@ const adminController = require("../controllers/admin-controller");
 const router = express.Router();
 
 router.route('/users').get(  adminController.getAllUsers);
-router.route('/courses').get(  adminController.getAllCourses);
+router.route('/contacts').get(  adminController.getAllContact);
 router.route('/users/delete/:id').delete(  adminController.deleteUserByID);
-router.route('/courses/delete/:id').delete(  adminController.deleteCourseByID);
+router.route('/contacts/delete/:id').delete(  adminController.deleteContactByID);
 router.route('/users/:id').get(  adminController.getUserByID);
 router.route('/users/update/:id').patch(  adminController.updateUserById);
 
