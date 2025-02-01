@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
@@ -11,14 +11,12 @@ const Login = () => {
     });
 
     const navigate = useNavigate();
-    const { storeTokenInLS } = useAuth(); // Fixed function name
-
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            navigate("/");
-        }
-    }, [navigate]);
+    const { storeTokeninLS, isLoggedIn } = useAuth(); 
+    // useEffect(() => {
+    //     if (isLoggedIn) {
+    //         navigate("/"); 
+    //     }
+    // }, [isLoggedIn, navigate]); 
 
     const handleInput = (e) => {
         const { name, value } = e.target;
@@ -45,10 +43,10 @@ const Login = () => {
 
             if (response.ok) {
                 console.log("Login successful", resData.token);
-                storeTokenInLS(resData.token);
+                storeTokeninLS(resData.token);  
                 setUser({ email: "", password: "" });
                 toast.success("Login Successful");
-                navigate("/");
+                navigate("/");  
             } else {
                 toast.error(resData.extraDetails || resData.message || "Invalid credentials");
             }
