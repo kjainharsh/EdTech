@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
-// import { useAuth } from "../store/auth";
+import { useAuth } from "../store/auth";
 
 const Navbar = () => {
-    // const { isLoggedIn } = useAuth();
+     const { isLoggedIn } = useAuth();
     return (
         <>
             <div id="page-content-wrapper">
