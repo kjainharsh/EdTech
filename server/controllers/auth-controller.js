@@ -12,13 +12,13 @@ const home = async (req, res) => {
 
 const register = async (req, res,next) => {
     try {
-        const { username, email, phone, password } = req.body;
+        const { username, email, password } = req.body;
 
         const UserExist = await EdTechUser.findOne({ email: email });
         if (UserExist) {
             return res.status(400).json({ message: "Email already exists" });
         }
-        const data = await EdTechUser.create({ username, email, phone, password });
+        const data = await EdTechUser.create({ username, email, password });
         res.status(200).json({ msg: "Registration Successfully Done ", token: await data.generateToken(), userId: data._id.toString()});
     } catch (error) {
         res.status(500).json({ message: "Server error" });

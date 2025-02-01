@@ -852,3 +852,8 @@ body.dark-mode .contact-section .cta-button:hover {
         margin-bottom: 2rem;
     }
 }
+
+
+.card {
+  animation: fadeIn 1s ease-in-out;
+}

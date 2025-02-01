@@ -26,11 +26,6 @@ const signUpSchema = loginSchema.extend({
         .email({ message: "Invalid Email Address" })
         .min(3, { message: "Email must be at least 3 characters" })
         .max(255, { message: "Email must be no more than 255 characters" }),
-    phone: z
-        .string({ required_error: "Phone is Required" })
-        .trim()
-        .min(10, { message: "Phone must be at least 10 characters" })
-        .max(20, { message: "Phone must be no more than 20 characters" }),
     password: z
         .string({ required_error: "Password is Required" })
         .min(6, { message: "Password must be at least 6 characters" })
