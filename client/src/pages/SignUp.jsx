@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import "./SignUp.css"; // Import the CSS file for styling
 
 const Signup = () => {
     const [user, setUser] = useState({
@@ -51,8 +52,8 @@ const Signup = () => {
     };
 
     return (
-        <div className="signup-container d-flex justify-content-center align-items-center">
-            <div className="card p-4" style={{ width: "100%", maxWidth: "400px" }}>
+        <div className="signup-container">
+            <div className="card p-4">
                 <h2 className="text-center mb-4">Sign Up</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">

@@ -1,6 +1,8 @@
 import React from 'react';
+import Footer from '../components/Footer';
 const Home = () => {
     return (
+        <>
         <div>
             <section
                 id="home"
@@ -161,7 +163,9 @@ const Home = () => {
                     <a href="features.html" className="btn btn-light btn-lg">Explore Features</a>
                 </div>
             </section>
-        </div>
+            </div>
+            <Footer />
+        </>
     );
 }
 

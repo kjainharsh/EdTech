@@ -16,7 +16,12 @@ body.dark-mode {
 
 /* Navbar */
 .navbar {
-    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
     padding: 0.5rem 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -30,7 +35,7 @@ body.dark-mode {
 }
 
 body.dark-mode .navbar {
-    background-color: #1e1e1e;
+    background-color: #222;
 }
 
 .navbar .logo {
@@ -125,8 +130,8 @@ body.dark-mode .navbar .hamburger span {
     background: none;
     border: none;
     cursor: pointer;
-    color: #222;
-    font-size: 1.5rem;
+    color: white;
+    font-size: 18px;
 }
 
 body.dark-mode .navbar .dark-mode-toggle {
@@ -188,6 +193,40 @@ body.dark-mode #sidebar-wrapper .list-group-item {
 #sidebar-wrapper {
     width: 250px;
     transition: margin-left 0.3s ease;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #444;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    z-index: 1200; /* Adjusted z-index to ensure it appears above other content */
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+body.dark-mode .sidebar {
+    background-color: #333;
 }
 
 /* Main Content */

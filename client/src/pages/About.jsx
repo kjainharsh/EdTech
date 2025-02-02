@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './About.css'; // Import the CSS file for styling
 
 const About = () => {
     return (
-        <div>
+        <div className="about-page">
             <section id="about" className="about-section">
                 <div className="container">
                     <div className="about-content">
@@ -14,13 +15,12 @@ const About = () => {
                             <NavLink to="/features" className="cta-button">Explore Our Features</NavLink>
                         </div>
                         <div className="about-image">
-                            <img src="images/about-us.png" alt="About Us" />
+                            <img src="images/about.png" alt="About Us" />
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Mission & Values Section */}
             <section id="mission" className="mission-section">
                 <div className="container">
                     <h2>Our Mission & Values</h2>

@@ -3,6 +3,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import "./Login.css"; // Import the CSS file for styling
+import Footer from "../components/Footer";
 
 const Login = () => {
     const [user, setUser] = useState({
@@ -57,6 +59,7 @@ const Login = () => {
     };
 
     return (
+        <>
         <div className="login-container">
             <div className="card p-4">
                 <h2 className="text-center mb-4">Login</h2>
@@ -93,7 +96,9 @@ const Login = () => {
                     </div>
                 </form>
             </div>
-        </div>
+            </div>
+            {/* <Footer /> */}
+            </>
     );
 };
 

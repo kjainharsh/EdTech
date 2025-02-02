@@ -23,7 +23,7 @@ const App = () => {
           <Route path="*" element={<Error />} />
           <Route path="/about" element={<About />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     </>
   );
