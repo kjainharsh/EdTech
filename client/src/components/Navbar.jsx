@@ -39,11 +39,19 @@ const Navbar = () => {
             </div>
             <nav>
               <ul className="nav-links">
-                <li>
-                  <NavLink to="/login" className="cta-button">
-                    login
-                  </NavLink>
-                </li>
+                {isLoggedIn ? (
+                  <li>
+                    <NavLink to="/logout" className="cta-button">
+                      Logout
+                    </NavLink>
+                  </li>
+                ) : (
+                  <li>
+                    <NavLink to="/login" className="cta-button">
+                      Login
+                    </NavLink>
+                  </li>
+                )}
               </ul>
               <button
                 className="dark-mode-toggle"
@@ -66,12 +74,20 @@ const Navbar = () => {
         <NavLink to="/contact" onClick={toggleSidebar}>
           Contact
         </NavLink>
-        <NavLink to="/login" onClick={toggleSidebar}>
-          Login
-        </NavLink>
-        <NavLink to="/signup" onClick={toggleSidebar}>
-          Sign Up
-        </NavLink>
+        {isLoggedIn ? (
+          <li>
+            <NavLink to="/logout">Logout</NavLink>
+          </li>
+        ) : (
+          <>
+            <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>
+            <li>
+              <NavLink to="/signup">SignUp</NavLink>
+            </li>
+          </>
+        )}
       </div>
     </>
   );
