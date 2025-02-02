@@ -1,0 +1,56 @@
+header {
+    background-color: #343a40;
+    padding: 1rem 0;
+    text-align: center; /* Center the header content */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Center the navigation items */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+nav ul li a svg {
+    margin-right: 0.5rem;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 2rem;
+    color: #333;
+}
+
+main.admin-main {
+    padding-top: 12rem; /* Further increased padding to ensure content is visible */
+    min-height: calc(100vh - 12rem); /* Ensure main content takes up full height */
+}
