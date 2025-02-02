@@ -1,0 +1,62 @@
+.admin-users-section {
+    padding: 6rem 0 2rem 0;
+    background-color: #f9f9f9;
+}
+
+.admin-users-section h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.admin-users table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+.admin-users th, .admin-users td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-users th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.admin-users tr:hover {
+    background-color: #f1f1f1;
+}
+
+.admin-users button {
+    padding: 0.5rem 1rem;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin-users button:hover {
+    background-color: #c82333;
+}
+
+.admin-users a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.admin-users a:hover {
+    color: #0056b3;
+}
