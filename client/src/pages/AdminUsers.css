@@ -60,3 +60,86 @@
 .admin-users a:hover {
     color: #0056b3;
 }
+
+.admin-courses-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.admin-courses .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.admin-courses h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.admin-courses table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-courses th, .admin-courses td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-courses th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.admin-courses tr:hover {
+    background-color: #f1f1f1;
+}
+
+.admin-courses button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.admin-courses button:hover {
+    background-color: #0056b3;
+}
+
+.admin-courses a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.admin-courses a:hover {
+    text-decoration: underline;
+}
+
+.add-course-button-container {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.add-course-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.add-course-button:hover {
+    background-color: #218838;
+}

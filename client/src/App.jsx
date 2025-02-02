@@ -13,6 +13,9 @@ import { AdminLayout } from "./components/Layouts/Admin-Layout";
 import { AdminContacts } from "./pages/Admin-Contacts";
 import { AdminUsers } from "./pages/Admin-Users";
 import { AdminUpdate } from "./pages/Admin-Update";
+import { AdminCourses } from "./pages/Admin-Course";
+import { AdminCourseUpdate } from "./pages/Admin-CourseUpdate";
+import { AdminCourseInsert } from "./pages/Admin-CourseInsert";
 
 const App = () => {
   return (
@@ -31,7 +34,10 @@ const App = () => {
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="users" element={<AdminUsers />}/>
             <Route path="contacts" element={<AdminContacts />} />
+            <Route path="courses" element={<AdminCourses />} />
+            <Route path="courses/insert" element={<AdminCourseInsert />} />
             <Route path="users/:id/edit" element={<AdminUpdate />} />
+            <Route path="courses/:id/edit" element={<AdminCourseUpdate />} />
           </Route>
         </Routes>
         {/* <Footer /> */}

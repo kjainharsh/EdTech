@@ -32,7 +32,7 @@ export const AdminLayout = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/courses">
+                                <NavLink to="/admin/courses">
                                     <FaRegListAlt /> Courses
                                 </NavLink>
                             </li>
