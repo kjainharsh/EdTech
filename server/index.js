@@ -6,6 +6,7 @@ const authRoute = require("./router/auth-router.js");
 const courseRoute = require("./router/course-router.js");
 const contactRoute = require("./router/contact-router.js");
 const adminRoute = require("./router/admin-router.js");
+const notificationRoute = require("./router/notification-router.js");
 const connectdb = require("./utils/db.js");
 const errorMiddleware = require("./middleware/error-middleware.js");
 const OpenAI = require("openai");
@@ -24,6 +25,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/data", courseRoute);
 app.use("/api/form", contactRoute);
 app.use("/api/admin", adminRoute);
+app.use("/api/user", notificationRoute);
 app.use(errorMiddleware);
 
 const openai = new OpenAI({
