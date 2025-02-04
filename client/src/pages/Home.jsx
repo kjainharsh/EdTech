@@ -1,6 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../components/Footer';
+import './Home.css'; // Ensure you have a CSS file for styling
+
 const Home = () => {
+    const [chatOpen, setChatOpen] = useState(false);
+    const [message, setMessage] = useState("");
+    const [reply, setReply] = useState("");
+
+    const handleChatClick = () => {
+        setChatOpen(true);
+    };
+
+    const handleSendMessage = async () => {
+        try {
+            const response = await fetch("http://localhost:5000/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ message })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setReply(data.reply.replace(/\n/g, "<br />")); 
+                setMessage("");
+            } else {
+                setReply("Failed to connect to chat.");
+            }
+        } catch (error) {
+            console.error("Error connecting to chat:", error);
+            setReply("Error connecting to chat.");
+        }
+    };
+
     return (
         <>
         <div>
@@ -163,6 +196,32 @@ const Home = () => {
                     <a href="features.html" className="btn btn-light btn-lg">Explore Features</a>
                 </div>
             </section>
+
+            {/* Chat with Assistant Button */}
+            <div className="chat-assistant-button">
+                <button onClick={handleChatClick}>
+                    💬 Chat with Assistant
+                </button>
+            </div>
+
+            {/* Chat Dialog Box */}
+            {chatOpen && (
+                <div className="chat-dialog">
+                    <div className="chat-header">
+                        <h3>Chat with Assistant</h3>
+                        <button onClick={() => setChatOpen(false)}>✖</button>
+                    </div>
+                    <div className="chat-body">
+                        <textarea
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            placeholder="Type your message here..."
+                        />
+                        <button onClick={handleSendMessage}>Send</button>
+                        {reply && <p className="chat-reply" dangerouslySetInnerHTML={{ __html: reply }}></p>}
+                    </div>
+                </div>
+            )}
             </div>
             <Footer />
         </>
