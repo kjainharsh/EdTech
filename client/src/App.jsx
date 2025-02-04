@@ -16,6 +16,7 @@ import { AdminUpdate } from "./pages/Admin-Update";
 import { AdminCourses } from "./pages/Admin-Course";
 import { AdminCourseUpdate } from "./pages/Admin-CourseUpdate";
 import { AdminCourseInsert } from "./pages/Admin-CourseInsert";
+import Notifications from "./pages/Notifications";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="*" element={<Error />} />
           <Route path="/about" element={<About />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/notifications" element={<Notifications />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="users" element={<AdminUsers />}/>
             <Route path="contacts" element={<AdminContacts />} />
