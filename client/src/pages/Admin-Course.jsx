@@ -57,7 +57,7 @@ export const AdminCourses = () => {
                                 <th>Course Name</th>
                                 <th>Instructor</th>
                                 <th>Duration</th>
-                                <th>Price</th>
+                                <th>Price</th> {/* Ensure Price column is present */}
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
@@ -69,7 +69,7 @@ export const AdminCourses = () => {
                                         <td>{course.courseName}</td>
                                         <td>{course.instructor}</td>
                                         <td>{course.duration}</td>
-                                        <td>{course.price}</td>
+                                        <td>{course.price}</td> {/* Ensure Price is displayed */}
                                         <td>
                                             <Link to={`/admin/courses/${course._id}/edit`}>Edit</Link>
                                         </td>

@@ -8,7 +8,8 @@ const courseSchema = new Schema({
     maxStudents: { type: Number, required: true },
     enrolledStudents: { type: [String], default: [] },
     videos: { type: [String], default: [] }, // Array of video URLs
-    description: { type: [String], default: [] }, 
+    description: { type: [String], default: [] },
+    price: { type: String, required: true } // Add price field as string
 });
 
 const Course = model("Course", courseSchema);
