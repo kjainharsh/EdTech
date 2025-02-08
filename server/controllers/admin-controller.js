@@ -1,6 +1,7 @@
 const EdTechContact = require("../models/contact-models");
 const course = require("../models/course-models");
 const EdTechUser = require("../models/user_models");
+const Notification = require("../models/notification-models");
 
 const getAllUsers = async (req, res, next) => {
     try {
@@ -125,4 +126,51 @@ const getCourseByID = async (req, res, next) => {
     }
 }
 
-module.exports = { getAllUsers, getAllContact, getCourseByID, insertCourse, updateCourseById,deleteCourseByID, getAllCourse, deleteUserByID, getUserByID, updateUserById, deleteContactByID };
+const getAllNotifications = async (req, res, next) => {
+    try {
+        const notifications = await Notification.find();
+        if (!notifications || notifications.length == 0) {
+            return res.status(404).json({ message: "No notifications found" });
+        }
+        return res.status(200).json(notifications);
+    } catch (error) {
+        next(error);
+    }
+}
+
+const deleteNotificationByID = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        await Notification.deleteOne({ _id: id });
+        return res.status(200).json({ message: "Notification deleted successfully" });
+    } catch (error) {
+        next(error);
+    }
+}
+
+const insertNotification = async (req, res, next) => {
+    try {
+        const newNotificationData = req.body;
+        const insertedNotification = await Notification.create(newNotificationData);
+        return res.status(201).json(insertedNotification);
+    } catch (error) {
+        next(error);
+    }
+}
+
+module.exports = {
+    getAllUsers,
+    getAllContact,
+    getCourseByID,
+    insertCourse,
+    updateCourseById,
+    deleteCourseByID,
+    getAllCourse,
+    deleteUserByID,
+    getUserByID,
+    updateUserById,
+    deleteContactByID,
+    getAllNotifications,
+    deleteNotificationByID,
+    insertNotification
+};

@@ -27,7 +27,7 @@ const Notifications = () => {
                         notifications.map((notification, index) => (
                             <div className="notification-card" key={index}>
                                 <p>{notification.message}</p>
-                                <p className="notification-date">{new Date(notification.createdAt).toLocaleString()}</p>
+                                <p className="notification-date">{new Date(notification.date).toLocaleString()}</p>
                             </div>
                         ))
                     ) : (

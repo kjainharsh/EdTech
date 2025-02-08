@@ -17,6 +17,7 @@ import { AdminCourses } from "./pages/Admin-Course";
 import { AdminCourseUpdate } from "./pages/Admin-CourseUpdate";
 import { AdminCourseInsert } from "./pages/Admin-CourseInsert";
 import Notifications from "./pages/Notifications";
+import AdminNotifications from "./pages/Admin-Notifications";
 
 const App = () => {
   return (
@@ -40,6 +41,9 @@ const App = () => {
             <Route path="courses/insert" element={<AdminCourseInsert />} />
             <Route path="users/:id/edit" element={<AdminUpdate />} />
             <Route path="courses/:id/edit" element={<AdminCourseUpdate />} />
+            <Route path="notifications" element={<AdminNotifications />} />
+            {/* <Route path="notifications/:id/" element={<AdminNotifications />} />
+            <Route path="notifications/:id/edit" element={<AdminNotifications />} /> */}
           </Route>
         </Routes>
         {/* <Footer /> */}
