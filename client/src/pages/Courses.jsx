@@ -2,8 +2,12 @@ import { useAuth } from "../store/auth";
 import "./Courses.css";
 
 export const Courses = () => {
-    const { courses } = useAuth();
+    const { courses, addToCart } = useAuth();
     console.log("courses", courses);
+
+    const handleEnroll = (course) => {
+        addToCart(course);
+    };
     
     return (
         <section className="section-courses">
@@ -36,7 +40,7 @@ export const Courses = () => {
                                     <p><strong>Duration:</strong> {duration}</p>
                                     <p><strong>Max Students:</strong> {maxStudents}</p>
                                     <p><strong>Videos:</strong> {videos.length}</p>
-                                    <button className="enroll-button">Enroll</button>
+                                    <button className="enroll-button" onClick={() => handleEnroll(course)}>Enroll</button>
                                 </div>
                             </div>
                         );

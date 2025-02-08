@@ -1,5 +1,6 @@
-import { BrowserRouter,Routes,Route } from "react-router-dom"
-import Navbar from "./components/Navbar"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Navbar from "./components/Navbar";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
@@ -18,12 +19,22 @@ import { AdminCourseUpdate } from "./pages/Admin-CourseUpdate";
 import { AdminCourseInsert } from "./pages/Admin-CourseInsert";
 import Notifications from "./pages/Notifications";
 import AdminNotifications from "./pages/Admin-Notifications";
+import Cart from "./pages/Cart"; 
 
 const App = () => {
+  const [cartCount, setCartCount] = useState(() => {
+    const savedCartCount = localStorage.getItem("cartCount");
+    return savedCartCount ? JSON.parse(savedCartCount) : 0;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cartCount", JSON.stringify(cartCount));
+  }, [cartCount]);
+
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        <Navbar cartCount={cartCount} /> 
         <Routes>
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
@@ -32,23 +43,22 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Error />} />
           <Route path="/about" element={<About />} />
-          <Route path="/courses" element={<Courses />} />
+          <Route path="/courses" element={<Courses cartCount={cartCount} setCartCount={setCartCount} />} /> {/* Pass cartCount and setCartCount as props */}
           <Route path="/notifications" element={<Notifications />} />
+          <Route path="/cart" element={<Cart />} /> 
           <Route path="/admin" element={<AdminLayout />}>
-            <Route path="users" element={<AdminUsers />}/>
+            <Route path="users" element={<AdminUsers />} />
             <Route path="contacts" element={<AdminContacts />} />
             <Route path="courses" element={<AdminCourses />} />
             <Route path="courses/insert" element={<AdminCourseInsert />} />
             <Route path="users/:id/edit" element={<AdminUpdate />} />
             <Route path="courses/:id/edit" element={<AdminCourseUpdate />} />
             <Route path="notifications" element={<AdminNotifications />} />
-            {/* <Route path="notifications/:id/" element={<AdminNotifications />} />
-            <Route path="notifications/:id/edit" element={<AdminNotifications />} /> */}
           </Route>
         </Routes>
-        {/* <Footer /> */}
       </BrowserRouter>
     </>
   );
 };
-export default App
+
+export default App;

@@ -8,6 +8,8 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const [courses, setCourses] = useState([]);
+    const [cartCount, setCartCount] = useState(localStorage.getItem("cartCount") || 0);
+    const [cartItems, setCartItems] = useState(localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []);
     const authorizationToken = `Bearer ${token}`;
 
     const storeTokeninLS = (serverToken) => {
@@ -69,12 +71,23 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const addToCart = (course) => {
+        const existingItem = cartItems.find(item => item.courseId === course.courseId);
+        if (!existingItem) {
+            const updatedCartItems = [...cartItems, course];
+            setCartItems(updatedCartItems);
+            setCartCount(updatedCartItems.length);
+            localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+            localStorage.setItem("cartCount", updatedCartItems.length);
+        }
+    };
+
     useEffect(() => {
         userAuthentication();
         getCourses();
     }, []);
     //tackling logout functionality
-    return (<AuthContext.Provider value={{ storeTokeninLS, isLoggedIn, LogoutUser, token, user, courses, authorizationToken, isLoading }}>
+    return (<AuthContext.Provider value={{ storeTokeninLS, isLoggedIn, LogoutUser, token, user, courses, authorizationToken, isLoading, cartCount, cartItems, addToCart }}>
         {children}
     </AuthContext.Provider>);
 };

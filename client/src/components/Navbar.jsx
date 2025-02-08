@@ -2,25 +2,19 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { useAuth } from "../store/auth";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, cartCount } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle("dark-mode", !isDarkMode);
-  };
-
   return (
     <>
       <div id="page-content-wrapper">
-        {/* Header */}
         <header className="navbar sticky">
           <div className="container">
             <button
@@ -39,6 +33,12 @@ const Navbar = () => {
             </div>
             <nav>
               <ul className="nav-links">
+                <li>
+                  <NavLink to="/cart" className="cart-icon">
+                    <FaShoppingCart size={24} />
+                    <span className="cart-count">{cartCount}</span>
+                  </NavLink>
+                </li>
                 {isLoggedIn ? (
                   <li>
                     <NavLink to="/logout" className="cta-button">
@@ -53,13 +53,6 @@ const Navbar = () => {
                   </li>
                 )}
               </ul>
-              <button
-                className="dark-mode-toggle"
-                aria-label="Toggle dark mode"
-                onClick={toggleDarkMode}
-              >
-                {isDarkMode ? "Light Mode" : "Dark Mode"}
-              </button>
             </nav>
           </div>
         </header>
