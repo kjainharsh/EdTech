@@ -1,0 +1,60 @@
+.edit-profile-container {
+  max-width: 600px;
+  margin: 80px auto 40px; /* Reduce top margin */
+  padding: 20px;
+  padding-top: 40px; /* Reduce padding to the top */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content */
+  height: auto; /* Adjust height to fit content */
+}
+
+.edit-profile-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+}
+
+.form-group {
+  width: 100%; /* Ensure the form groups take full width */
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.save-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}

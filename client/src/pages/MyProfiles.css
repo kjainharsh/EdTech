@@ -1,0 +1,64 @@
+.profile-container {
+  max-width: 600px;
+  margin: 80px auto 40px; /* Reduce top margin */
+  padding: 20px;
+  padding-top: 40px; /* Reduce padding to the top */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content */
+  height: auto; /* Adjust height to fit content */
+}
+
+.profile-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+}
+
+.profile-field {
+  width: 100%; /* Ensure the fields take full width */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.profile-field p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.profile-field p strong {
+  display: inline-block;
+  width: 150px;
+  color: #000;
+}
+
+.profile-field p span {
+  display: inline-block;
+  width: calc(100% - 150px);
+}
+
+.edit-profile-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-profile-button:hover {
+  background-color: #0056b3;
+}

@@ -19,6 +19,14 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    dateOfBirth: {
+        type: String, 
+        required: false,
+    },
+    mobile: {
+        type: Number,
+        required: false,
+    },
 });
 
 userSchema.pre('save', async function (next) {

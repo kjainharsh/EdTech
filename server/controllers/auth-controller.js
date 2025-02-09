@@ -58,4 +58,27 @@ const user = async (req, res) => {
     }
 }
 
-module.exports = {  home,register,login,user };
+const getUserByID = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const data = await EdTechUser.findOne({ _id: id }, { password: 0 });
+        return res.status(200).json(data);
+    } catch (error) {
+        next(error)
+    }
+}
+
+const updateUserById = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const updatedUserData = req.body;
+        delete updatedUserData.email; 
+        const updatedData = await EdTechUser.updateOne({ _id: id }, {
+            $set: updatedUserData,
+        });
+        return res.status(200).json(updatedData);
+    } catch (error) {
+        next(error);
+    }
+}
+module.exports = { home, register, login, user, getUserByID, updateUserById };

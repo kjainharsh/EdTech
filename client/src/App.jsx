@@ -20,6 +20,8 @@ import { AdminCourseInsert } from "./pages/Admin-CourseInsert";
 import Notifications from "./pages/Notifications";
 import AdminNotifications from "./pages/Admin-Notifications";
 import Cart from "./pages/Cart"; 
+import MyProfiles from "./pages/MyProfiles";
+import EditProfiles from "./pages/EditProfiles";
 
 const App = () => {
   const [cartCount, setCartCount] = useState(() => {
@@ -45,7 +47,8 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/courses" element={<Courses cartCount={cartCount} setCartCount={setCartCount} />} /> {/* Pass cartCount and setCartCount as props */}
           <Route path="/notifications" element={<Notifications />} />
-          <Route path="/cart" element={<Cart />} /> 
+          <Route path="/myprofile" element={<MyProfiles />} /> {/* Uncommented the MyProfiles route */}
+          <Route path="/edit-profile/:id" element={<EditProfiles />} /> {/* Added the EditProfiles route */}
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="users" element={<AdminUsers />} />
             <Route path="contacts" element={<AdminContacts />} />

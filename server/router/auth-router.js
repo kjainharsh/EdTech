@@ -8,6 +8,8 @@ const authMiddleware = require("../middleware/auth-middleware");
 router.route("/").get(authcontrollers.home);
 router.route("/register").post(validate(signUpSchema),authcontrollers.register);
 router.route("/login").post(validate(loginSchema) ,authcontrollers.login);
-router.route("/user").get(authMiddleware,authcontrollers.user);
+router.route("/user").get(authMiddleware, authcontrollers.user);
+router.route('/users/:id').get(authMiddleware,authcontrollers.getUserByID);
+router.route('/users/update/:id').patch(authMiddleware, authcontrollers.updateUserById);
 
 module.exports = router;
