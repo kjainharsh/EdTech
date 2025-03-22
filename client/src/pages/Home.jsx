@@ -1,11 +1,31 @@
 import React, { useState } from 'react';
 import Footer from '../components/Footer';
 import './Home.css'; // Ensure you have a CSS file for styling
+import { useAuth } from '../store/auth';
 
 const Home = () => {
     const [chatOpen, setChatOpen] = useState(false);
     const [message, setMessage] = useState("");
     const [reply, setReply] = useState("");
+    const { courses } = useAuth(); // Fetch courses from useAuth
+
+    const features = [
+        {
+            title: "Interactive Learning",
+            description: "Engage with interactive quizzes, assignments to enhance your learning experience.",
+            image: "/images/interactive-courses.png",
+        },
+        {
+            title: "Expert Instructors",
+            description: "Learn from industry experts and professionals who are passionate about teaching.",
+            image: "/images/expert-instructors.png",
+        },
+        {
+            title: "Community Support",
+            description: "Join a vibrant community of learners and educators for collaboration and support.",
+            image: "/images/community-support.png",
+        },
+    ];
 
     const handleChatClick = () => {
         setChatOpen(true);
@@ -46,144 +66,82 @@ const Home = () => {
                     <div className="hero-content">
                         <h1 className="display-4">Empowering Education <br />Through Technology</h1>
                         <p className="lead">Join our community to enhance your learning experience.</p>
-                        <a href="courses.html" className="btn btn-primary btn-lg">Explore Courses</a>
+                        <a href="/courses" className="btn btn-primary btn-lg">Explore Courses</a>
                     </div>
                 </div>
             </section>
 
-            {/* Introduction Section */}
-            <section className="intro-section py-5">
+
+                {/* Introduction Section */}
+                <section className="intro-section py-5">
+                    <div className="container">
+                        <h2>Welcome to EdTech Platform</h2>
+                        <p>Our mission is to provide the best educational resources and support to help you achieve your learning goals. Explore our interactive courses, learn from expert instructors, and join a community of learners and educators.</p>
+                    </div>
+                </section>
+                
+            {/* About Section */}
+            <section className="about-section py-5">
                 <div className="container">
-                    <h2>Welcome to EdTech Platform</h2>
-                    <p>Our mission is to provide the best educational resources and support to help you achieve your learning goals. Explore our interactive courses, learn from expert instructors, and join a community of learners and educators.</p>
+                    <h2>About Us</h2>
+                    <p>
+                        At EdTech, we are dedicated to revolutionizing education through technology. 
+                        Our platform offers a wide range of interactive courses, expert instructors, 
+                        and a supportive community to help learners achieve their goals. Whether you're 
+                        looking to upskill, explore new interests, or advance your career, EdTech is here 
+                        to empower your learning journey.
+                    </p>
+                    <div className="text-center mt-4">
+                        <a href="/about" className="btn btn-primary">Learn More About Us</a>
+                    </div>
+                </div>
+            </section>
+
+
+            {/* Our Courses Section */}
+            <section className="courses-section py-5 bg-light">
+                <div className="container">
+                    <h2>Our Courses</h2>
+                    <p>Explore our wide range of courses designed to meet your learning needs.</p>
+                    <div className="row">
+                        {courses && courses.slice(0, 3).map((course, index) => (
+                            <div className="col-md-4" key={index}>
+                                <div className="card uniform-card">
+                                    <img src="/images/design.png" className="card-img-top" alt={course.courseName} />
+                                    <div className="card-body">
+                                        <h3 className="card-title">{course.courseName}</h3>
+                                        <p className="card-text">{course.description || "No description available."}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="text-center mt-4">
+                        <a href="/courses" className="btn btn-primary">Explore More Courses</a>
+                    </div>
                 </div>
             </section>
 
             {/* Features Section */}
-            <section className="features-section py-5 bg-light">
+            <section className="features-section py-5">
                 <div className="container">
                     <h2>Our Features</h2>
                     <p>Discover the unique features that make our platform stand out.</p>
                     <div className="row">
-                        <div className="col-md-4">
-                            <div className="card">
-                                <img src="images/interactive-courses.png" className="card-img-top" alt="Interactive Courses" />
-                                <div className="card-body">
-                                    <h3 className="card-title">Interactive Courses</h3>
-                                    <p className="card-text">Engage with interactive content and quizzes designed to enhance your learning experience.</p>
+                        {features.map((feature, index) => (
+                            <div className="col-md-4" key={index}>
+                                <div className="card uniform-card">
+                                    <img src={feature.image} className="card-img-top" alt={feature.title} />
+                                    <div className="card-body">
+                                        <h3 className="card-title">{feature.title}</h3>
+                                        <p className="card-text">{feature.description}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="card">
-                                <img src="images/expert-instructors.png" className="card-img-top" alt="Expert Instructors" />
-                                <div className="card-body">
-                                    <h3 className="card-title">Expert Instructors</h3>
-                                    <p className="card-text">Learn from industry experts and professionals who are passionate about teaching.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="card">
-                                <img src="images/community-support.png" className="card-img-top" alt="Community Support" />
-                                <div className="card-body">
-                                    <h3 className="card-title">Community Support</h3>
-                                    <p className="card-text">Join a vibrant community of learners and educators for support and collaboration.</p>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
-                </div>
-            </section>
-
-            {/* Our Services Section */}
-            <section className="services-section py-5">
-                <div className="container">
-                    <h2>Our Services</h2>
-                    <p>Discover the range of services we offer to enhance your learning experience.</p>
-                    <div className="row">
-                        <div className="col-md-4">
-                            <div className="card">
-                                <img src="images/service1.png" className="card-img-top" alt="Service 1" />
-                                <div className="card-body">
-                                    <h3 className="card-title">Service 1</h3>
-                                    <p className="card-text">Description of service 1.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="card">
-                                <img src="images/service2.png" className="card-img-top" alt="Service 2" />
-                                <div className="card-body">
-                                    <h3 className="card-title">Service 2</h3>
-                                    <p className="card-text">Description of service 2.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="card">
-                                <img src="images/service3.png" className="card-img-top" alt="Service 3" />
-                                <div className="card-body">
-                                    <h3 className="card-title">Service 3</h3>
-                                    <p className="card-text">Description of service 3.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Our Clients Section */}
-            <section className="clients-section py-5 bg-light">
-                <div className="container">
-                    <h2>Our Clients</h2>
-                    <p>We are proud to work with a diverse range of clients.</p>
-                    <div className="row">
-                        <div className="col-md-3">
-                            <img src="images/client1.png" className="img-fluid" alt="Client 1" />
-                        </div>
-                        <div className="col-md-3">
-                            <img src="images/client2.png" className="img-fluid" alt="Client 2" />
-                        </div>
-                        <div className="col-md-3">
-                            <img src="images/client3.png" className="img-fluid" alt="Client 3" />
-                        </div>
-                        <div className="col-md-3">
-                            <img src="images/client4.png" className="img-fluid" alt="Client 4" />
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Testimonials Section */}
-            <section className="testimonials-section py-5">
-                <div className="container">
-                    <h2>What Our Students Say</h2>
-                    <div className="row">
-                        <div className="col-md-4">
-                            <div className="card">
-                                <div className="card-body">
-                                    <p>"The interactive courses have greatly enhanced my learning experience. The instructors are knowledgeable and supportive."</p>
-                                    <h4>- Student A</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="card">
-                                <div className="card-body">
-                                    <p>"I love the community support. It's great to connect with other learners and share knowledge."</p>
-                                    <h4>- Student B</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="card">
-                                <div className="card-body">
-                                    <p>"The platform is user-friendly and the content is top-notch. Highly recommend EdTech Platform!"</p>
-                                    <h4>- Student C</h4>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="text-center mt-4">
+                        <a href="/features" className="btn btn-primary">Explore More Features</a>
                     </div>
                 </div>
             </section>
