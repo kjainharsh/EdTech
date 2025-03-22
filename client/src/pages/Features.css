@@ -1,0 +1,92 @@
+.features-page {
+  font-family: 'Poppins', sans-serif;
+  padding: 100px 20px 40px; /* Add padding to the top for spacing */
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center; /* Center the container horizontally */
+  align-items: center; /* Center the container vertically */
+  min-height: 100vh; /* Ensure the container takes full viewport height */
+}
+
+.features-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.features-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.features-header p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 700px); /* Three cards per row */
+  column-gap: 10px; /* Reduce horizontal gap between cards */
+  row-gap: 14px; /* Adjust vertical gap between cards */
+  max-width: 1680px; /* Limit the width of the grid */
+  width: 100%;
+}
+
+.feature-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px; /* Reduce padding */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 300px; /* Increase height */
+  overflow: hidden; /* Prevent content from overflowing */
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.feature-image {
+  width: 80px; /* Reduce the size of the image container */
+  height: 80px;
+  margin: 0 auto 10px; /* Adjust spacing below the image */
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-image img {
+  width: 70%;
+  height: auto;
+}
+
+.feature-title {
+  font-size: 1.4rem;
+  color: #007bff;
+  margin-bottom: 8px;
+}
+
+.feature-description {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+  word-wrap: break-word; /* Ensure long words break to fit within the card */
+  overflow: hidden; /* Prevent text from overflowing */
+  text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  -webkit-box-orient: vertical;
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr; /* Stack cards vertically on smaller screens */
+  }
+}
