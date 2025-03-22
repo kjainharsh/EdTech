@@ -44,6 +44,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Error />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/about" element={<About />} />
           <Route path="/courses" element={<Courses cartCount={cartCount} setCartCount={setCartCount} />} /> {/* Pass cartCount and setCartCount as props */}
           <Route path="/notifications" element={<Notifications />} />

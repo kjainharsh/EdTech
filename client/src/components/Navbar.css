@@ -16,22 +16,73 @@ body.dark-mode {
 
 /* Navbar */
 .navbar {
+    height: 80px; /* Increase the height of the navbar */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    padding: 0.5rem 1.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1100;
-    display: flex;
     justify-content: space-between;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    width: 100%;
+}
+
+.nav-main-links {
+    display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+.nav-auth-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #4CAF50;
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #ff0000;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
 }
 
 body.dark-mode .navbar {
@@ -1021,4 +1072,50 @@ body.dark-mode .contact-section .cta-button:hover {
     .course-card {
         margin-bottom: 2rem;
     }
+}
+
+.profile-icon {
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.profile-icon:hover {
+    color: #4CAF50;
+}
+
+.profile-dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.dropdown-menu a,
+.dropdown-menu button {
+    padding: 10px;
+    text-align: left;
+    text-decoration: none;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+    background-color: #f1f1f1;
+    color: #007bff;
 }

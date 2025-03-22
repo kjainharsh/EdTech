@@ -1,15 +1,25 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useAuth } from "../store/auth";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaBell, FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
-  const { isLoggedIn, cartCount } = useAuth();
+  const { isLoggedIn, cartCount, logout } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleLogout = () => {
+    navigate("/logout"); // Redirect to the logout page
   };
 
   return (
@@ -28,30 +38,58 @@ const Navbar = () => {
             <NavLink to="/" className="logo">
               Ed<span style={{ color: "#4CAF50" }}>Tech</span>
             </NavLink>
-            <div className="search-bar">
-              <input type="text" placeholder="Search for anything..." />
-            </div>
             <nav>
               <ul className="nav-links">
-                <li>
-                  <NavLink to="/cart" className="cart-icon">
-                    <FaShoppingCart size={24} />
-                    <span className="cart-count">{cartCount}</span>
-                  </NavLink>
-                </li>
-                {isLoggedIn ? (
+                {/* Main Links */}
+                <div className="nav-main-links">
                   <li>
-                    <NavLink to="/logout" className="cta-button">
-                      Logout
+                    <NavLink to="/about">About</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/courses">Courses</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/contact">Contact</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/notifications" className="notification-icon">
+                      <FaBell size={24} />
                     </NavLink>
                   </li>
-                ) : (
                   <li>
-                    <NavLink to="/login" className="cta-button">
-                      Login
+                    <NavLink to="/cart" className="cart-icon">
+                      <FaShoppingCart size={24} />
+                      <span className="cart-count">{cartCount}</span>
                     </NavLink>
                   </li>
-                )}
+                </div>
+                {/* Auth Links */}
+                <div className="nav-auth-links">
+                  {isLoggedIn && (
+                    <li className="profile-dropdown">
+                      <FaUserCircle
+                        size={24}
+                        className="profile-icon"
+                        onClick={toggleDropdown}
+                      />
+                      {isDropdownOpen && (
+                        <div className="dropdown-menu">
+                          <NavLink to="/myprofile" onClick={toggleDropdown}>
+                            My Profile
+                          </NavLink>
+                          <button onClick={handleLogout}>Logout</button>
+                        </div>
+                      )}
+                    </li>
+                  )}
+                  {!isLoggedIn && (
+                    <li>
+                      <NavLink to="/login" className="cta-button">
+                        Login
+                      </NavLink>
+                    </li>
+                  )}
+                </div>
               </ul>
             </nav>
           </div>
@@ -64,13 +102,24 @@ const Navbar = () => {
         <NavLink to="/about" onClick={toggleSidebar}>
           About
         </NavLink>
+        <NavLink to="/courses" onClick={toggleSidebar}>
+          Courses
+        </NavLink>
+        <NavLink to="/notifications" onClick={toggleSidebar}>
+          Notifications
+        </NavLink>
         <NavLink to="/contact" onClick={toggleSidebar}>
           Contact
         </NavLink>
         {isLoggedIn ? (
-          <li>
-            <NavLink to="/logout">Logout</NavLink>
-          </li>
+          <>
+            <li>
+              <NavLink to="/myprofile">My Profile</NavLink>
+            </li>
+            <li>
+              <button onClick={handleLogout}>Logout</button>
+            </li>
+          </>
         ) : (
           <>
             <li>
