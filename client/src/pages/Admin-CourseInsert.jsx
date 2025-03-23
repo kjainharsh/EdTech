@@ -4,14 +4,13 @@ import { toast } from "react-toastify";
 import "./Admin-Update.css";
 
 export const AdminCourseInsert = () => {
-
     const [data, setData] = useState({
         courseName: "",
         instructor: "",
-        duration: "",
-        price: "", 
-        description: "", 
-        videos: [],
+        duration: 0,
+        price: "",
+        description: "",
+        videos: "",
         enrolledStudents: 0,
         maxStudents: 0,
         courseId: ""
@@ -19,9 +18,7 @@ export const AdminCourseInsert = () => {
     const { authorizationToken } = useAuth();
 
     const handleInput = (e) => {
-        let name = e.target.name;
-        let value = e.target.value;
-
+        const { name, value } = e.target;
         setData({
             ...data,
             [name]: value,
@@ -35,7 +32,7 @@ export const AdminCourseInsert = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: authorizationToken
+                    Authorization: authorizationToken,
                 },
                 body: JSON.stringify(data),
             });
@@ -45,21 +42,20 @@ export const AdminCourseInsert = () => {
                 setData({
                     courseName: "",
                     instructor: "",
-                    duration: "",
-                    price: "", 
-                    description: "", 
-                    videos: [],
+                    duration: 0,
+                    price: "",
+                    description: "",
+                    videos: "",
                     enrolledStudents: 0,
                     maxStudents: 0,
                     courseId: ""
                 });
-            }
-            else {
+            } else {
                 toast.error("Failed to Add Course");
             }
-
         } catch (error) {
-            console.log(error);
+            console.error(error);
+            toast.error("An error occurred while adding the course");
         }
     };
 
@@ -98,9 +94,9 @@ export const AdminCourseInsert = () => {
                         </div>
 
                         <div>
-                            <label htmlFor="duration">Duration</label>
+                            <label htmlFor="duration">Duration (weeks)</label>
                             <input
-                                type="text"
+                                type="number"
                                 name="duration"
                                 id="duration"
                                 autoComplete="off"
@@ -136,14 +132,14 @@ export const AdminCourseInsert = () => {
                         </div>
 
                         <div>
-                            <label htmlFor="videos">Videos</label>
+                            <label htmlFor="videos">Videos (URL)</label>
                             <input
                                 type="text"
                                 name="videos"
                                 id="videos"
                                 autoComplete="off"
                                 value={data.videos}
-                                onChange={(e) => setData({ ...data, videos: e.target.value.split(",") })}
+                                onChange={handleInput}
                                 required
                             />
                         </div>
@@ -195,4 +191,4 @@ export const AdminCourseInsert = () => {
             </div>
         </section>
     );
-}
+};

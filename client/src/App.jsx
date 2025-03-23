@@ -37,7 +37,7 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <Navbar cartCount={cartCount} /> 
+        {!window.location.pathname.startsWith("/admin") && <Navbar cartCount={cartCount} />} 
         <Routes>
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />

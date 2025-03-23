@@ -23,7 +23,7 @@ export const AdminLayout = () => {
                         <ul>
                             <li>
                                 <NavLink to="/admin/users">
-                                    <FaUser /> users
+                                    <FaUser /> Users
                                 </NavLink>
                             </li>
                             <li>
@@ -36,7 +36,11 @@ export const AdminLayout = () => {
                                     <FaRegListAlt /> Courses
                                 </NavLink>
                             </li>
-
+                            <li>
+                                <NavLink to="/admin/notifications">
+                                    <FaMessage /> Notifications
+                                </NavLink>
+                            </li>
                             <li>
                                 <NavLink to="/">
                                     <FaHome /> Home

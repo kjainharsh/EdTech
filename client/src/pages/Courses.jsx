@@ -9,6 +9,18 @@ export const Courses = () => {
         addToCart(course);
     };
     
+
+    const getYouTubeEmbedUrl = (url) => {
+        if (!url) return ""; // Handle empty URL case
+        if (url.includes("/shorts/")) {
+            return url.replace("/shorts/", "/embed/");
+        } else if (url.includes("watch?v=")) {
+            return url.replace("watch?v=", "embed/");
+        }
+        return url;
+    };
+
+
     return (
         <section className="section-courses">
             <div className="container">
@@ -23,11 +35,18 @@ export const Courses = () => {
                         return (
                             <div className="card" key={index}>
                                 <div className="card-img">
-                                    <img
-                                        src="/images/design.png"
-                                        alt={courseName}
-                                        width="200"
-                                    />
+                                    {videos && typeof videos === "string" ? ( // Ensure `videos` is a string
+                                        <iframe
+                                            width="360"
+                                            height="315"
+                                            src={getYouTubeEmbedUrl(videos)}
+                                            title="YouTube video player"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        ></iframe>
+                                    ) : (
+                                        <p>Invalid video URL</p> // Handle errors
+                                    )}
                                 </div>
 
                                 <div className="card-details">

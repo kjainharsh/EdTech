@@ -6,9 +6,9 @@ const courseSchema = new Schema({
     instructor: { type: String, required: true },
     duration: { type: Number, required: true }, // in weeks
     maxStudents: { type: Number, required: true },
-    enrolledStudents: { type: [String], default: [] },
-    videos: { type: [String], default: [] }, // Array of video URLs
-    description: { type: [String], default: [] },
+    enrolledStudents: { type: Number, default: 0 },
+    videos: { type: String, default: "" }, // Videos as a single string (URL or comma-separated)
+    description: { type: String, default: "" }, // Change from [String] to String
     price: { type: String, required: true } // Add price field as string
 });
 
