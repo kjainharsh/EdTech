@@ -54,6 +54,6 @@ The project was envisioned to address the growing need for personalized and acce
     npm start
 4. **Open your browser**
    ```arduino
-   http://localhost:3000
+   http://localhost:5000
 
 
