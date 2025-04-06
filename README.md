@@ -32,7 +32,7 @@ The project was envisioned to address the growing need for personalized and acce
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/edtech-project.git
+   git clone https://github.com/kjainharsh/edtech-project.git
    cd edtech-project
 2. **Install dependencies for server and client**
    ```bash
