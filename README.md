@@ -1,4 +1,4 @@
-# 📚 EdTech Website
+# 📚 SmartLearn Course Enrollment Platform
 
 ## 👥 Team Members
 - Harsh Jain (2023BCS-023)
