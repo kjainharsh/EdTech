@@ -1,8 +1,9 @@
 # 📚 EdTech Website
 
 ## 👥 Team Members
-- Harsh Jain
-- Saurav Patel
+- Harsh Jain (2023BCS-023)
+- Monisha Badugu (2023BCS=036)
+- Nidhi Shekhawat (2023BCS-040)
 
 ## 📝 Project Description
 This EdTech platform is designed to enhance the online learning experience by allowing students to explore, enroll in, and manage courses seamlessly. It features both student and mentor/admin dashboards, offering a full-fledged learning management system with interactive features for efficient content delivery and student engagement.
